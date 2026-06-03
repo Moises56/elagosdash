@@ -467,6 +467,9 @@ function initAudio() {
     bgmGain.gain.value = 0.15;
     bgmGain.connect(masterGain);
   }
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
 }
 
 function playSound(type) {
@@ -2166,6 +2169,7 @@ function playIntroBGM() {
     if (introNote >= 16) {
       clearInterval(introInterval);
       gameStartBgmPlayed = true;
+      bgmPlaying = false;
       startBGM();
     }
   }, introSpeed);
