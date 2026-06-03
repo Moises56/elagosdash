@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Dash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="yt-player"></div>
+  <div id="game-container">
+    <canvas id="game-canvas"></canvas>
+    <div id="ui-layer">
+      <div id="score-display">0</div>
+      <div id="high-score-display">BEST: 0</div>
+    </div>
+    <div id="start-screen" class="screen">
+      <h1 class="title">NEON DASH</h1>
+      <p class="subtitle">One button. Infinite neon.</p>
+      <div class="instructions">
+        <p>Tap or Space to <strong>JUMP</strong></p>
+        <p>Hold to <strong>DASH</strong></p>
+      </div>
+      <button id="start-btn" class="btn">START</button>
+      <div class="sound-toggle">
+        <span>SOUND</span>
+        <div id="sound-btn" class="toggle-btn on">ON</div>
+      </div>
+    </div>
+    <div id="game-over-screen" class="screen hidden">
+      <h2 class="title">GAME OVER</h2>
+      <p class="score-final">SCORE: <span id="final-score">0</span></p>
+      <p class="best-final">BEST: <span id="best-score">0</span></p>
+      <button id="restart-btn" class="btn">RETRY</button>
+    </div>
+  </div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="game.js"></script>
+</body>
+</html>

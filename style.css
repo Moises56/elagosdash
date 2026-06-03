@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  max-height: 720px;
+  background: linear-gradient(180deg, #0a0a1a 0%, #12121f 50%, #0a0a1a 100%);
+  overflow: hidden;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#yt-player {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#score-display {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 40px #0ff;
+  letter-spacing: 2px;
+}
+
+#high-score-display {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #f0f;
+  text-shadow: 0 0 8px #f0f;
+  align-self: center;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 10, 20, 0.92);
+  z-index: 20;
+  padding: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #0ff;
+  text-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+  margin-bottom: 10px;
+  letter-spacing: 4px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { text-shadow: 0 0 20px #0ff, 0 0 40px #0ff; }
+  50% { text-shadow: 0 0 30px #0ff, 0 0 60px #0ff, 0 0 80px #0ff; }
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.instructions {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.instructions p {
+  font-size: 1rem;
+  color: #fff;
+  margin: 12px 0;
+}
+
+.instructions strong {
+  color: #f0f;
+  text-shadow: 0 0 8px #f0f;
+}
+
+.btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 15px 50px;
+  background: transparent;
+  border: 2px solid #0ff;
+  color: #0ff;
+  cursor: pointer;
+  letter-spacing: 3px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  background: rgba(0, 255, 255, 0.15);
+  box-shadow: 0 0 20px #0ff, inset 0 0 20px rgba(0, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.sound-toggle {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sound-toggle span {
+  color: #666;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+.toggle-btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  border: 1px solid #444;
+  color: #444;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.toggle-btn.on {
+  border-color: #0f0;
+  color: #0f0;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+.toggle-btn.off {
+  border-color: #f00;
+  color: #f00;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+}
+
+#game-over-screen .title {
+  color: #f0f;
+  font-size: 2.5rem;
+  animation: none;
+}
+
+.score-final {
+  font-size: 2rem;
+  color: #0ff;
+  margin: 20px 0;
+  text-shadow: 0 0 15px #0ff;
+}
+
+.best-final {
+  font-size: 1.2rem;
+  color: #f0f;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px #f0f;
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}

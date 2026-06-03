@@ -1,0 +1,10 @@
+{
+  "name": "neon-dash",
+  "version": "1.0.0",
+  "description": "One-button neon arcade game",
+  "scripts": {
+    "dev": "npx serve -l 3000"
+  },
+  "keywords": ["game", "neon", "arcade"],
+  "license": "MIT"
+}
