@@ -36,7 +36,7 @@ let bgmPlaying = false;
 let canDoubleJump = false;
 let ytPlayer = null;
 let ytPlayerReady = false;
-let ytApiFailed = false;
+let ytApiFailed = true;
 let isTransitioning = false;
 
 function isYTReady() {
@@ -325,7 +325,7 @@ function toggleYouTubeMute() {
 
 function playIntroJingle() {
   if (!soundEnabled || !audioCtx) {
-    startYouTubeMusic();
+    playIntroBGM();
     return;
   }
   
@@ -360,7 +360,7 @@ function playIntroJingle() {
   
   setTimeout(() => {
     isTransitioning = false;
-    startYouTubeMusic();
+    playIntroBGM();
   }, 2000);
 }
 
